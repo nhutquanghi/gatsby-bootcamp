@@ -1,29 +1,39 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, graphql, useStaticQuery } from 'gatsby'
 
 import * as headerStyles from './header.module.scss'
 
 const Header = () => {
+    const data =useStaticQuery(graphql`
+        query{
+            site{
+                siteMetadata{
+                    title
+                }
+            }
+        }
+    `)
+
     return (
         <header className={`header ${headerStyles.header}`}>
             <h1>
                 <Link className={`title ${headerStyles.title}`} to="/">
-                    Nhựt Quang
+                    {data.site.siteMetadata.title}
                 </Link>
             </h1>
             <nav>
                 <ul className={`navList ${headerStyles.navList}`}>
                     <li>
-                        <Link className={`navItem ${headerStyles.navItem}`} to="/">Home</Link>
+                        <Link className={`navItem ${headerStyles.navItem}`} activeClassName={`activeNavItem ${headerStyles.activeNavItem}`} to="/">Home</Link>
                     </li>
                     <li>
-                        <Link className={`navItem ${headerStyles.navItem}`} to="/blog">Blog</Link>
+                        <Link className={`navItem ${headerStyles.navItem}`} activeClassName={`activeNavItem ${headerStyles.activeNavItem}`} to="/blog">Blog</Link>
                     </li>
                     <li>
-                        <Link className={`navItem ${headerStyles.navItem}`} to="/about">About</Link>
+                        <Link className={`navItem ${headerStyles.navItem}`} activeClassName={`activeNavItem ${headerStyles.activeNavItem}`} to="/about">About</Link>
                     </li>
                     <li>
-                        <Link className={`navItem ${headerStyles.navItem}`} to="/contact">Contact</Link>
+                        <Link className={`navItem ${headerStyles.navItem}`} activeClassName={`activeNavItem ${headerStyles.activeNavItem}`} to="/contact">Contact</Link>
                     </li>
                 </ul>
             </nav>

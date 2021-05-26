@@ -1,5 +1,5 @@
 .header{
-    padding: 0.3rem 0 3rem;
+    padding: 1.3rem 0 3rem;
 }
 .title{
     color: #000000;
@@ -20,4 +20,8 @@
 
 .nav-item:hover{
     color: #666666;
+}
+
+.active-nav-item{
+    color: #333333;
 }
